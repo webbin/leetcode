@@ -19,11 +19,23 @@ function reverse(x) {
     }
 }
 
+function reverseWithNumber(x) {
+    let number = x;
+    let result = 0;
+
+    while (number > 0) {
+        const last = number % 10;
+        result = result * 10 + last;
+        number = Math.floor(number / 10);
+    }
+    return result;
+}
+
 
 const number = 1534236469;
 console.log(reverse(number));
-
+console.log(reverseWithNumber(number));
 // const s = number / 10;
 // const i = Math.floor(s);
 // console.log(Math.floor((s-i) * 10));
-console.log(Math.pow(2, 31) - 1);
+// console.log(Math.pow(2, 31) - 1);
