@@ -23,13 +23,29 @@ function ListNode(val, next) {
 
 
 const mergeTwoLists = function(l1, l2) {
+    let node1 = l1;
+    let node2 = l2;
+    while (node1) {
+        if (node1.val > node2) {
+            const temp = node2.next;
+            node2.next = node1;
 
-    while (l1.next) {
+        } else {
 
+        }
 
         while (l2.next) {
 
         }
+    }
+
+
+    if (l1.val < l2.val) {
+
+    } else {
+        const temp = l2.next;
+        l2.next = l1;
+
     }
 
 };
