@@ -7,6 +7,26 @@ function ListNode(val, next) {
 }
 
 
+const getNodefirst = () => {
+	const endValue = 19;
+	let temp = null;
+	let i = endValue;
+	while (i > 0) {
+		temp = new ListNode(i, temp);
+		i -= 2;
+	}
+	return temp;
+};
+
+const printNodeList = (startNode) => {
+	let str = '';
+	let nod = startNode;
+	while (nod && nod.val) {
+		str += nod.val+'->';
+		nod = nod.next;
+	}
+	console.log(str);
+};
 
 /**
  * Definition for singly-linked list.
@@ -49,3 +69,6 @@ const mergeTwoLists = function(l1, l2) {
     }
 
 };
+
+const startN = getNodefirst();
+printNodeList(startN);
