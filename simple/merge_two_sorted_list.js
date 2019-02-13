@@ -18,6 +18,25 @@ const getNodefirst = () => {
 	return temp;
 };
 
+const nodeFromList = (list, index) => {
+	let next = null;
+	const isFirst = typeof index !== 'number';
+	const isLast = list.length === index + 1;
+	const nextIndex = isFirst ? index + 1 : 1;
+
+	const currentIndex = isFirst ? 0 : index;
+
+	let n;
+	if (isLast) {
+		n = new ListNode(list[index], null);
+	} else {
+		next = nodeFromList(list, nextIndex);
+		n = new ListNode(list[currentIndex], next);
+	}
+	return n;
+};
+
+
 const printNodeList = (startNode) => {
 	let str = '';
 	let nod = startNode;
@@ -70,5 +89,5 @@ const mergeTwoLists = function(l1, l2) {
 
 };
 
-const startN = getNodefirst();
+const startN = nodeFromList([9, 8, 7, 12, 0, 22, 19, 82, 122]);
 printNodeList(startN);
