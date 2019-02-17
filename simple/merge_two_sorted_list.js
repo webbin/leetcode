@@ -18,20 +18,17 @@ const getNodefirst = () => {
 	return temp;
 };
 
-const nodeFromList = (list, index) => {
+const nodeFromList = (list, index = 0) => {
 	let next = null;
-	const isFirst = typeof index !== 'number';
 	const isLast = list.length === index + 1;
-	const nextIndex = isFirst ? index + 1 : 1;
-
-	const currentIndex = isFirst ? 0 : index;
+	const nextIndex = index + 1;
 
 	let n;
 	if (isLast) {
 		n = new ListNode(list[index], null);
 	} else {
 		next = nodeFromList(list, nextIndex);
-		n = new ListNode(list[currentIndex], next);
+		n = new ListNode(list[index], next);
 	}
 	return n;
 };
@@ -40,8 +37,13 @@ const nodeFromList = (list, index) => {
 const printNodeList = (startNode) => {
 	let str = '';
 	let nod = startNode;
-	while (nod && nod.val) {
-		str += nod.val+'->';
+	while (nod && (nod.val !== undefined || nod.val !== null)) {
+		const next =  nod.next;
+		if (next) {
+			str += nod.val+'->';
+		} else {
+			str += nod.val;
+		}
 		nod = nod.next;
 	}
 	console.log(str);
