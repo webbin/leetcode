@@ -18,3 +18,67 @@ X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。
 C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。
  */
+
+
+
+
+const romanToInt = (s) => {
+    const map = {
+        I: 1,
+        IV: 4,
+        V: 5,
+        IX: 9,
+        X: 10,
+        XL: 40,
+        L: 50,
+        XC: 90,
+        C: 100,
+        CD: 400,
+        D: 500,
+        CM: 900,
+        M: 1000
+    };
+    let ans = 0;
+    for (let i = 0; i < s.length;) {
+        if (i + 1 < s.length && map[s.substring(i, i + 2)]) {
+            ans += map[s.substring(i, i + 2)];
+            i += 2;
+        } else {
+            ans += map[s.substring(i, i + 1)];
+            i++;
+        }
+    }
+    console.log('ans = ', ans);
+    return ans;
+};
+
+
+
+const romToInt = (rome) => {
+    const RomMap = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    }
+
+    let value = 0;
+    for (let i = 0; i < rome.length; i += 1) {
+        const currentValue = RomMap[rome[i]];
+        const nextValue = RomMap[rome[i+1]];
+        if (nextValue && currentValue < nextValue) {
+            value -= currentValue;
+        } else {
+            value += currentValue;
+        }
+    }
+
+    console.log('int = ', value);
+    return value;
+};
+
+
+romanToInt('MCMXCIV');
